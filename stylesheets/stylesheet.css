@@ -6,6 +6,27 @@ by Jason Costello, @jsncostello
 @import url(pygment_trac.css);
 
 /*******************************************************************************
+Local customizations
+*******************************************************************************/
+
+.footer-text {
+  float: left;
+  font-size: 80%;
+}
+
+.footer-logo {
+  float: right;
+}
+
+.footer-logo img {
+  margin: 0;
+  border: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/*******************************************************************************
 MeyerWeb Reset
 *******************************************************************************/
 
