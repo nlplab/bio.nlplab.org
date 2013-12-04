@@ -34,13 +34,14 @@
         <h3>N-Gram collection</h3>
 	<p>...Blah blah about file formats...</p>
 	<p>The N-Gram collections from PubMed and PubMed Central can
-	be downloaded
-	from <a href="http://evexdb.org/pmresources/ngrams">these
-	two directories</a>. To fetch all files, you can use
-	the <em>filelist</em> files provided, for example like so (in bash):</p>
+	be downloaded separately from these two directories:
+	<ul><li><a href="http://evexdb.org/pmresources/ngrams/PMC/">
+	http://evexdb.org/pmresources/ngrams/PMC/</a></li><li><a href="http://evexdb.org/pmresources/ngrams/PubMed/">
+	http://evexdb.org/pmresources/ngrams/PubMed/</a></li></ul> To fetch all files, you can use
+	the <em>filelist</em> files provided in each of these directories, for example like so (in bash):</p>
 	<code>wget http://evexdb.org/pmresources/ngrams/PMC/filelist</code><br/>
 	<code>for url in `cat filelist` ; do wget -c $url ; done</code>
-	<p>To only get 5-grams, you can filter the filelist:</p>
+	<p>To only download 5-grams, you can filter the filelist:</p>
 	<code>for url in `cat filelist | grep 5-grams` ; do wget -c $url ; done</code>
 	<p>The file sizes are
 	  <table>
