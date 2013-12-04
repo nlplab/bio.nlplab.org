@@ -42,6 +42,19 @@
 	<code>for url in `cat filelist` ; do wget -c $url ; done</code>
 	<p>To only get 5-grams, you can filter the filelist:</p>
 	<code>for url in `cat filelist | grep 5-grams` ; do wget -c $url ; done</code>
+	<p>The file sizes are
+	  <table>
+	    <tr><th>       </th><th>PMC</th><th>PM</th></tr>
+	    <tr><td>1-grams</td><td>168MB</td><td>236MB</td></tr>
+	    <tr><td>2-grams</td><td>1.6GB</td><td>2.4GB</td></tr>
+	    <tr><td>3-grams</td><td>6GB</td><td>8.3GB</td></tr>
+	    <tr><td>4-grams</td><td>13GB</td><td>16GB</td></tr>
+	    <tr><td>5-grams</td><td>18GB</td><td>23GB</td></tr>
+	    <tr><td>6-grams</td><td>24GB</td><td>29GB</td></tr>
+	    <tr><td>7-grams</td><td>28GB</td><td>33GB</td></tr>
+	  </table>
+	 </p>   
+	      
 	<h3>Language model</h3>
 	<p>A 5-gram smoothed language model was produced using
 	the <a href="http://kheafield.com/code/kenlm/">KenLM</a>
@@ -53,9 +66,20 @@
 	  model can be processed and queried using KenLM, or any other package
 	  supporting the ARPA format.
 	</p>
+	<p>The file sizes are
+	  <table>
+	    <tr><th>       </th><th>PM+PMC</th></tr>
+	    <tr><td>1-grams</td><td>173MB</td></tr>
+	    <tr><td>2-grams</td><td>1.8GB</td></tr>
+	    <tr><td>3-grams</td><td>7.9GB</td></tr>
+	    <tr><td>4-grams</td><td>19GB</td></tr>
+	    <tr><td>5-grams</td><td>29GB</td></tr>
+	  </table>
+	 </p>   
+
 	<h3>Hosting</h3> The data is kindly hosted by the <a href="http://evexdb.org/">EVEX project</a>
 	at the University of Turku. Download speeds are throttled on a
-	per-connection basis to 1MB/sec. Please do not bypass this using multiple connections.
+	per-connection basis to 1MB/sec. Please do not bypass this limit using multiple connections.
       </section>
     </div>
 
