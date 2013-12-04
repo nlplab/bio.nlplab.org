@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="bio.nlplab.org : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>bio.nlplab.org</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+<!--           <a id="forkme_banner" href="https://github.com/nlplab/bio.nlplab.org">View on GitHub</a> -->
+
+          <h1 id="project_title">bio.nlplab.org</h1>
+          <h2 id="project_tagline">Language modelling resources</h2>
+
+<!--             <section id="downloads"> -->
+<!--               <a class="zip_download_link" href="https://github.com/nlplab/bio.nlplab.org/zipball/master">Download this project as a .zip file</a> -->
+<!--               <a class="tar_download_link" href="https://github.com/nlplab/bio.nlplab.org/tarball/master">Download this project as a tar.gz file</a> -->
+<!--             </section> -->
+<!--         </header> -->
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>N-Gram collection</h3>
+	<p>...Blah blah about file formats...</p>
+	<p>The N-Gram collections from PubMed and PubMed Central can
+	be downloaded
+	from <a href="http://evexdb.org/pmresources/ngrams">these
+	two directories</a>. To fetch all files, you can use
+	the <em>filelist</em> files provided, for example like so (in bash):</p>
+	<code>wget http://evexdb.org/pmresources/ngrams/PMC/filelist</code><br/>
+	<code>for url in `cat filelist` ; do wget -c $url ; done</code>
+	<p>To only get 5-grams, you can filter the filelist:</p>
+	<code>for url in `cat filelist | grep 5-grams` ; do wget -c $url ; done</code>
+	<h3>Language model</h3>
+	<p>A 5-gram smoothed language model was produced using
+	the <a href="http://kheafield.com/code/kenlm/">KenLM</a>
+	language modelling package on the union of the PubMed and
+	PubMed Central data. You can download the model in a standard
+	  <em>ARPA</em> format from <a href="http://evexdb.org/pmresources/language-models">
+	    this directory</a>. All you need to do is to inject the contents of
+	  the five (or less, if you wish) .bz2 files into model.arpa. The resulting
+	  model can be processed and queried using KenLM, or any other package
+	  supporting the ARPA format.
+	</p>
+	<h3>Hosting</h3> The data is kindly hosted by the <a href="http://evexdb.org/">EVEX project</a>
+	at the University of Turku. Download speeds are throttled on a
+	per-connection basis to 1MB/sec. Please do not bypass this using multiple connections.
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright footer-text">© 2013 bio.nlplab.org contributors</p>
+	<p class="footer-logo"><a href="http://creativecommons.org/licenses/by/3.0/"><img title="Content on this website is licensed under a Creative Commons Attribution 3.0 License. (Linked data licensed separately.)" src="http://i.creativecommons.org/l/by/3.0/80x15.png"/></a></p>
+<!--         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p> -->
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
