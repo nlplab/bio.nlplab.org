@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="bio.nlplab.org : " />
+    <meta name="description" content="Biomedical natural language processing tools and resources" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -18,29 +17,284 @@
         <header class="inner">
 <!--           <a id="forkme_banner" href="https://github.com/nlplab/bio.nlplab.org">View on GitHub</a> -->
 
-          <h1 id="project_title">bio.nlplab.org</h1>
-          <h2 id="project_tagline">Tools and resources for biomedical natural language processing</h2>
-
-<!--             <section id="downloads"> -->
-<!--               <a class="zip_download_link" href="https://github.com/nlplab/bio.nlplab.org/zipball/master">Download this project as a .zip file</a> -->
-<!--               <a class="tar_download_link" href="https://github.com/nlplab/bio.nlplab.org/tarball/master">Download this project as a tar.gz file</a> -->
-<!--             </section> -->
-<!--         </header> -->
+          <h1 id="project_title">Biomedical natural language processing</h1>
+          <h2 id="project_tagline">Tools and resources</h2>
+        </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-	  <a name="welcome-to-bionlplaborg" class="anchor" href="#welcome-to-bionlplaborg"><span class="octicon octicon-link"></span></a>Welcome to bio.nlplab.org.</h3>
 
-	<p>This is a placeholder, please come back later.</p>
+	<p>This page provides various language resources created from
+	  the entire available biomedical scientific literature, a
+	  text corpus of over five billion words.
+	</p>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<ul>
+	  <li><a href="#word-vectors">Word vectors</a>: vector
+	    representations of words
+	  </li>
+	  <li><a href="#ngram-counts">N-gram counts</a>: counts of
+	    word sequence occurrences
+	  </li>
+	  <li><a href="#ngram-model">Language models</a>: models of
+	    word sequence probabilities
+	  </li>
+	</ul>
 
-	<h3>Lorem</h3>
+	<p><a href="#doc-tools">Documentation and tools</a> allowing
+	  these and similar resources to be recreated are also
+	  provided.
+	</p>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<hr/>
+
+	<h3 id="word-vectors">Word vectors</h3>
+
+	<p>Word vectors were induced from PubMed and PMC texts and
+	  their combination using the
+	  <a href="https://code.google.com/p/word2vec/">word2vec</a>
+	  tool. The word vectors are provided in the word2vec binary
+	  format.
+	</p>The word vectors are available for download from the
+	following directory:
+	</p>
+	<ul>
+	  <li><a href="http://evexdb.org/pmresources/vec-space-models/">http://evexdb.org/pmresources/vec-space-models/</a></li>
+	</ul> 
+
+	<p>We also provide a set of word vectors induced on a
+	  combination of PubMed and PMC texts with texts extracted
+	  from a recent 
+	  <a href="http://en.wikipedia.org/wiki/Main_Page">English
+	  Wikipedia</a> dump. To get started with word vectors induced
+	  from a large corpus of biomedical and general-domain texts,
+	  download these vectors
+	  <a href="http://evexdb.org/pmresources/vec-space-models/wikipedia-pubmed-and-PMC-w2v.bin">here</a> (4GB file).
+	</p>
+
+	<p>See <a href="#word-vector-tools">below</a> for tools for
+	  working with this data.
+	</p>
+
+	<hr/>
+
+        <h3 id="ngram-counts">N-gram counts</h3>
+
+	<p>Counts and probabilities of all n-grams from the 5.5B
+	  tokens of the available biomedical literature.
+	</p>
+
+	<p>N-gram counts are provided in the simple TAB-separated
+	  values (TSV) format used for
+	  <a href="http://storage.googleapis.com/books/ngrams/books/datasetsv2.html">Google n-grams</a>, easily understood through an example:
+	<quote>
+	  <pre><code>Materials and Methods     2012    44094   31834
+no significant difference 2012    19033   11898</code></pre>
+	</quote>
+
+	<p>
+	  Each line contains four TAB-separated values:
+	  <em>n-gram</em>, <em>year</em>, <em>total-count</em>, and
+	  <em>document-count</em>. <em>total-count</em> is the total
+	  number of occurrences of the n-gram in the given year,
+	  and <em>document-count</em> is the number of documents that
+	  the n-gram appears in that year.
+	</p>
+	<p>
+	</p>
+
+	<p>
+	  The n-grams for PubMed abstracts and PubMed Central full-text
+	  documents can be downloaded separately from these two directories:
+	</p>
+	<ul>
+	  <li><a href="http://evexdb.org/pmresources/ngrams/PMC/">http://evexdb.org/pmresources/ngrams/PMC/</a></li>
+	  <li><a href="http://evexdb.org/pmresources/ngrams/PubMed/">http://evexdb.org/pmresources/ngrams/PubMed/</a></li>
+	</ul> 
+	<p>
+	  To fetch all files, you can use the <em>filelist</em> files
+	  provided in each of these directories, for example as follows
+	  (in bash):
+	</p>
+	<quote>
+	  <pre><code>wget http://evexdb.org/pmresources/ngrams/PMC/filelist
+for url in `cat filelist` ; do wget -c $url ; done</code></pre>
+	</quote>
+	<p>
+	  To only download 5-grams, you can filter the filelist:
+	</p>
+	<quote>
+	  <pre><code>for url in `cat filelist | grep 5-grams` ; do wget -c $url ; done</code></pre>
+	</quote>
+	<p>The n-gram models are a large dataset. Please avoid
+	  unnecessary downloads.  The file sizes are as follows:
+	</p>
+	  <table style="font-size: 80%">
+	    <tr><th>       </th><th>PMC</th><th>PubMed</th></tr>
+	    <tr><td>1-grams</td><td>168MB</td><td>236MB</td></tr>
+	    <tr><td>2-grams</td><td>1.6GB</td><td>2.4GB</td></tr>
+	    <tr><td>3-grams</td><td>6GB</td><td>8.3GB</td></tr>
+	    <tr><td>4-grams</td><td>13GB</td><td>16GB</td></tr>
+	    <tr><td>5-grams</td><td>18GB</td><td>23GB</td></tr>
+	    <tr><td>6-grams</td><td>24GB</td><td>29GB</td></tr>
+	    <tr><td>7-grams</td><td>28GB</td><td>33GB</td></tr>
+	  </table>
+	 </p>   
+
+	<hr/>
+
+	<h3>Language model</h3>
+	<p>A smoothed 5-gram language model of the combination of the
+	  PubMed and PubMed Central data was produced using
+	  the <a href="http://kheafield.com/code/kenlm/">KenLM</a>
+	  language modelling package.
+	  </p>
+	<p>You can download the model in the standard <em>ARPA</em> format from
+	  <a href="http://evexdb.org/pmresources/language-models">this
+	    directory</a>. All you need to do is to inject the
+	    contents of the five (or less, if you need a lower-order
+	    model) .bz2 files into the model.arpa file. The resulting
+	    model can be processed and queried using KenLM, or any
+	    other package supporting the ARPA format.
+	</p>
+	<p>The file sizes are
+	  <table style="font-size: 80%">
+	    <tr><th>       </th><th>PubMed+PMC</th></tr>
+	    <tr><td>1-grams</td><td>173MB</td></tr>
+	    <tr><td>2-grams</td><td>1.8GB</td></tr>
+	    <tr><td>3-grams</td><td>7.9GB</td></tr>
+	    <tr><td>4-grams</td><td>19GB</td></tr>
+	    <tr><td>5-grams</td><td>29GB</td></tr>
+	  </table>
+	 </p>   
+
+	<hr/>
+
+	<h3 id="doc-tools">Documentation and tools</h3>
+
+	<p>To re-create the resources available from this page or
+	  create similar ones, see the following:
+	</p>
+
+	<ul>
+	  <li><a href="#source-data">Source data</a></li>
+	  <li><a href="#document-preprocessing">Document preprocessing</a></li>
+	  <li><a href="#word-vector-tools">Word vector tools</a></li>
+	  <li><a href="#ngram-tools">N-gram tools</a></li>
+	</ul>
+
+	<h4 id="source-data">Source data</h4>
+
+	<p>These resources were derived from the combination of all
+	  publication abstracts from 
+	  <a href="http://www.pubmed.com">PubMed</a> and all full-text
+	  documents from the
+	  <a href="http://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/">PubMed
+	    Central Open Access subset</a>. Together, these literature
+	  databases effectively cover the entire available
+	  biomedical domain scientific literature.
+	</p>
+
+	<h4 id="document-processing">Document preprocessing</h4>
+
+	<p>To create the resources, it is necessary to extract plain
+	  text content from the document data, which is distributed in
+	  custom XML formats.
+	</p>
+
+	<p>We applied the <tt>nxml2txt</tt> tool to extract plain
+	  ASCII text from the PubMed Central <tt>.nxml</tt> format.
+	  This tool is available for download from the
+	  <a href="https://github.com/spyysalo/nxml2txt">nxml2text
+	    github repository</a>.
+	</p>
+
+	<h4 id="word-vector-tools">Word vector tools</h4>
+
+	<p>The following tools were used to induce word vectors:
+	</p>
+
+	<ul>
+	  <li><a href="https://code.google.com/p/word2vec/">word2vec</a>
+	    by Tomas Mikolov and colleagues at Google.
+	  </li>
+	  <li><a href="http://www.nada.kth.se/~xmartin/java/">random
+	      indexing tools</a> by Martin Duneld.
+	  </li>
+	</ul>
+
+	<p>We additionally introduced a tool for working with word
+	  vectors created by different methods.
+	</p>
+
+	<ul>
+	  <li><a href="https://github.com/spyysalo/wvlib">wvlib</a>
+	    word vector library
+	  </li>
+	</ul>
+
+	<p>word2vec was run using the skip-gram model with a window
+	  size of 5, hierarchical softmax training, and a frequent
+	  word subsampling threshold of 0.001 to create
+	  200-dimensional vectors. We refer to the 
+	  <a href="https://code.google.com/p/word2vec/">word2vec</a>
+	  page for explanation of these parameters and further
+	  information.
+	</p>
+
+
+	<h4 id="ngram-tools">N-gram tools</h4>
+
+	<p>The following tools were used to derive N-gram counts and
+	  probabilities.
+	</p>
+
+	<ul>
+	  <li><a href="http://kheafield.com/code/kenlm/">KenLM
+	      Language Model Toolkit</a></li>
+	  <li><a href="http://https://github.com/spyysalo/ngramcount">ngramcount</a>
+	  </li>
+	</ul>
+
+	<hr/>
+
+	<h3 id="license">License</h3>
+
+	<p>All data on this page is made available under the
+	  <a href="http://creativecommons.org/licenses/by/3.0/">Creative
+	    Commons Attribution (CC BY) license</a>. Please attribute
+	  this data by citing
+	  <a href="#references">Pyysalo et al. (2013)</a>
+	</p>
+
+	<hr/>
+
+	<h3 id="hosting">Hosting</h3>
+
+	<p>
+	  Hosting for this data is generously provided by
+	  the <a href="http://evexdb.org/">EVEX project</a> at the
+	  <a href="http://bionlp.utu.fi/">University of Turku</a>.
+	  Download speeds are throttled on a per-connection basis to
+	  1MB/sec. Please do not bypass this limit using multiple
+	  connections.
+	</p>
+
+	<hr/>
+
+	<h3 id="references">References</h3>
+
+	<ul>
+	  <li id="pyysalo2013distributional"><strong>Distributional
+	      Semantics Resources for Biomedical Text
+	      Processing</strong>. 
+<!-- 	    [<a href="TODO">PDF TODO</a>]  -->
+	    Sampo Pyysalo, Filip Ginter, Hans Moen, Tapio
+	      Salakoski and Sophia Ananiadou. LBM 2013.
+	  </li>
+	</ul>
 
       </section>
     </div>
@@ -50,7 +304,6 @@
       <footer class="inner">
         <p class="copyright footer-text">© 2013 bio.nlplab.org contributors</p>
 	<p class="footer-logo"><a href="http://creativecommons.org/licenses/by/3.0/"><img title="Content on this website is licensed under a Creative Commons Attribution 3.0 License. (Linked data licensed separately.)" src="http://i.creativecommons.org/l/by/3.0/80x15.png"/></a></p>
-<!--         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p> -->
       </footer>
     </div>
 
